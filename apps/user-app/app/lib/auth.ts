@@ -12,7 +12,7 @@ export const authOptions = {
           type: "text",
           placeholder: "1231231231",
         },
-        password: { label: "Password", type: "password" },
+        password: { label: "Password", type: "password",  placeholder:'Password' },
       },
       // TODO: User credentials type from next-aut
       async authorize(credentials: any) {
@@ -33,7 +33,7 @@ export const authOptions = {
             return {
               id: existingUser.id.toString(),
               name: existingUser.name,
-              email: existingUser.number,
+              phoneNumber: existingUser.number,
             };
           }
           return null;
@@ -50,7 +50,7 @@ export const authOptions = {
           return {
             id: user.id.toString(),
             name: user.name,
-            email: user.number,
+            phoneNumber: user.number,
           };
         } catch (e) {
           console.error(e);
