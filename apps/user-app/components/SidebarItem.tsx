@@ -24,7 +24,7 @@ export const SidebarItem = ({
     >
       <div className="pr-2">{icon}</div>
       <div
-        className={`font-bold ${selected ? "text-[#6a51a6]" : "text-slate-500"}`}
+        className={`font-bold ${selected ? "text-[#6a36e3]" : "text-slate-400"}`}
       >
         {title}
       </div>
