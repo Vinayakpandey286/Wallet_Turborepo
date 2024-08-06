@@ -43,7 +43,7 @@ export const AddMoney = () => {
         />
         <div className="flex justify-center pt-4">
           <Button
-          className="bg-purple-800 text-white p-2 rounded-lg"
+          className="bg-[#6a36e3] text-white p-2 rounded-lg"
             onClick={() => {
               window.location.href = redirectUrl || "";
             }}
