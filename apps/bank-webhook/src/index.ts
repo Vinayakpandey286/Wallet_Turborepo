@@ -7,6 +7,10 @@ const PORT = 3003;
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("listening");
+});
+
 app.post("/hdfcWebhook", async (req, res) => {
   const paymentInformation: {
     token: string;
@@ -31,7 +35,7 @@ app.post("/hdfcWebhook", async (req, res) => {
       }),
       db.onRampTransaction.update({
         where: {
-          token: paymentInformation.userId,
+          token: paymentInformation.token,
         },
         data: {
           Status: "Success",
@@ -41,9 +45,9 @@ app.post("/hdfcWebhook", async (req, res) => {
 
     res.json({
       message:"Captured"
-    })
+    });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     await db.onRampTransaction.update({
       where: {
         token: paymentInformation.userId,
@@ -54,8 +58,8 @@ app.post("/hdfcWebhook", async (req, res) => {
     });
 
     res.status(411).json({
-      message:"Error while Processing webhook"
-    })
+      message: "Error while Processing webhook",
+    });
   }
 });
 
