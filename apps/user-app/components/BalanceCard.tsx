@@ -8,7 +8,7 @@ export const BalanceCard = ({
   locked: number;
 }) => {
   return (
-    <Card title={"Balance"}>
+    <Card title={"Balance"} className="border-2 rounded-s-md border-black-700 drop-shadow-md p-4">
       <div className="flex justify-between border-b border-slate-300 pb-2">
         <div>Unlocked balance</div>
         <div>{amount / 100} INR</div>

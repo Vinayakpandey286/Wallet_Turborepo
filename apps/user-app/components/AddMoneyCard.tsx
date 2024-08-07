@@ -26,7 +26,7 @@ export const AddMoney = () => {
   const [amount, setAmount] = useState(0);
 
   return (
-    <Card title="Add Money">
+    <Card title="Add Money" className="border-2 rounded-s-md border-black-700 drop-shadow-md p-4">
       <div className="w-full">
         <TextInput
           label={"Amount"}
