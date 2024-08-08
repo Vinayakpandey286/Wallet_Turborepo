@@ -21,13 +21,16 @@ async function getOnRampTransactions() {
 export default async function () {
   const transactions = await getOnRampTransactions();
 
+  console.log(transactions, "hi")
+
   return (
     <div className="w-full">
       <div className="text-4xl text-[#6a36e3] pt-8 mb-8 font-bold">
         Transaction
       </div>
-      <div className="pt-4 flex justify-center">
-        <OnRampTransactions transactions={transactions} />
+      <div className="pt-4 flex flex-col items-center">
+        <OnRampTransactions transactions={transactions} title="Recent Transaction" />
+        <OnRampTransactions transactions={transactions}  title="P2P Transfers"/>
       </div>
     </div>
   );

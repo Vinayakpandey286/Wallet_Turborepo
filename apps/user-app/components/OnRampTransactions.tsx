@@ -2,7 +2,9 @@ import { Card } from "@repo/ui/card";
 
 export const OnRampTransactions = ({
   transactions,
+  title,
 }: {
+  title: string;
   transactions: {
     time: Date;
     amount: number;
@@ -19,12 +21,12 @@ export const OnRampTransactions = ({
   }
   return (
     <Card
-      title="Recent Transactions"
+      title={title}
       className="border-2 rounded-s-md border-black-700 drop-shadow-md p-6"
     >
       <div className="pt-4">
-        {transactions.map((t) => (
-          <div className="flex justify-between gap-24">
+        {transactions.map((t, index) => (
+          <div className="flex justify-between gap-24" key={index}>
             <div>
               <div className="text-sm">{t.status} INR</div>
               <div className="text-slate-600 text-xs">

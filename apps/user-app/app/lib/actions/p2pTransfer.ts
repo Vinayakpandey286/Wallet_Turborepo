@@ -27,8 +27,8 @@ export async function p2pTransfer(to: string, amount: number) {
     //this is not safe because one user can send request simuntaneouly which bypasses the checking the
     // amount for this we can use locking in databases
     await prisma.$transaction(async (tx) => {
-      await tx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = $1 FOR UPDATE`,
-        [from]; // locking the row
+      console.log(from);
+      await tx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${from} FOR UPDATE`; // locking the row
 
       const fromBalance = await tx.balance.findUnique({
         where: { userId: from },
@@ -46,12 +46,22 @@ export async function p2pTransfer(to: string, amount: number) {
         where: { userId: toUser.id },
         data: { amount: { increment: amount } },
       });
+
+      await tx.p2pTransfer.create({
+        data: {
+          fromUserId: from,
+          toUserId: toUser?.id,
+          amount,
+          timestamp: new Date(),
+        },
+      });
     });
 
     return {
       message: "Transaction Done",
     };
   } catch (error) {
+    console.log(error);
     return {
       message: "Error while Transfering Moeny",
     };
