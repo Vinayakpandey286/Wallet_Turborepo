@@ -13,7 +13,7 @@ export const Appbar = ({ user, onSignin, onSignout }: AppbarProps) => {
   return (
     <>
       <div className="flex justify-between border-b px-4">
-        <div className="text-xl font-bold flex flex-col justify-center text-[#6a36e3]">PayTM</div>
+        <div className="text-xl font-bold flex flex-col justify-center text-[#6a36e3]">OwnWallet</div>
         <div className="flex flex-col justify-center pt-2">
           <Button
             onClick={user ? onSignout : onSignin}
